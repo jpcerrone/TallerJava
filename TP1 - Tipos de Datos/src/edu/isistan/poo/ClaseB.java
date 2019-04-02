@@ -2,7 +2,7 @@ package edu.isistan.poo;
 
 public class ClaseB extends ClaseA {
   
-  @override
+  @Override
   public String metodo3(){
     return "ClaseB.metodo3()";
   }
