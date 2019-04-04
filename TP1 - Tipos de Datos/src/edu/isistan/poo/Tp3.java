@@ -16,7 +16,14 @@ public class Tp3 {
 		rollNumber = n;
 		}
 		}
-
+	public static class Employee {
+		private int id;
+		private String name;
+		Employee(int id, String name){
+		this.id = id;
+		this.name = name;
+		}
+	}
 	public static void main(String[] args) {
 		//ej1
 			List<Integer> list = new ArrayList<Integer>();
@@ -79,6 +86,46 @@ public class Tp3 {
 			//C C B
 			//pop = poll en este caso
 			
+		//ej7
+			System.out.println();
+
+			List<String> countries = new ArrayList<String>();
+			countries.addAll(Arrays.asList("Australia","Canada","India","USA")
+			);
+			countries.remove(new String("USA"));
+			System.out.print(countries.size());
+
+			//3
+			// La lista utilizara el equals que hara el unboxing de los String
+			List<Employee> empList = new ArrayList<Employee>();
+			
+			empList.add(new Employee(1,"A"));
+			empList.add(new Employee(1,"B"));
+			empList.add(new Employee(1,"C"));
+			empList.remove(new Employee(1,"A"));
+			System.out.print(empList.size());
+			//3
+			//Employee no tendrá implementado el equals, por lo que vera a los 2 employees como distintos objetos
+			
+		//8
+			System.out.println();
+			List<Integer> list2 = new ArrayList<Integer>();
+			list2.add(10);
+			list2.add(10);
+			System.out.print(list2.size());
+			//list2.remove(10);
+			System.out.print(list2.size());
+			// 2 seguido de error, el remove intenta remover el index 10
+			System.out.println();
+		//9
+			List<Integer> list3 = new ArrayList<Integer>();
+			list3.add(10);
+			list3.add(10);
+			System.out.print(list3.size());
+
+			list3.remove(new Integer(10));
+			System.out.print(list3.size());
+			//2 1
 	}
 	
 }
