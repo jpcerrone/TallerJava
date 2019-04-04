@@ -10,6 +10,7 @@ import java.util.PriorityQueue;
 import java.util.Set;
 
 public class Tp3 {
+	//No tengo tan claro porque hay que ponerles static a estos metodos
 	public static class Student {
 		int rollNumber;
 		public Student(int n){
