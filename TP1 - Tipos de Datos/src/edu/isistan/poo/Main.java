@@ -130,6 +130,7 @@ public class Main {
 		//ej5
 
 		//-129,128, no van a dar true porque el compilador no les asigna una referencia predefinida
+		//-129,128, no van a dar true porque el cache guarda la misma referencia para los numeros del 0 al 128 nomas
 		
 		//ej6
 		//Son wrappers los del tipo Integer, Double, etc...
@@ -197,36 +198,22 @@ public class Main {
 		
 		//ej14 falta
 
-		//-129,128, no van a dar true porque el cache guarda la misma referencia para los numeros del 0 al 128 nomas
+		String a = "lala";
+		String b = "lala";
+		System.out.println(a==b);
+		System.out.println(a.equals(b));
+		//true, true
+		a = new String("lala");
+		b = new String("lala");
+		System.out.println(a==b);
+		System.out.println(a.equals(b));
+		//false, true
+		a = new String("lala").intern();
+		b = new String("lala").intern();
+		System.out.println(a==b);
+		System.out.println(a.equals(b));
+		//true, true
 
-		
-		//ej6
-		//Integer es una clase wrapper de int
-		ArrayList<Integer> a2 = new ArrayList();
-		//Lo de arriba se puede
-		//Con int no
-		//Los wrappers permiten usar los tipos de datos primitvos en colecciones
-		
-		//ej7
-		ArrayList<Integer> a3 = new ArrayList<>();
-		a3.add(10);
-		a3.add(9);
-		a3.add(8);
-		a3.add(7);
-		a3.add(5);
-		a3.add(4);
-		a3.add(3);
-		a3.add(2);
-		a3.add(1);
-		a3.add(0);
-		
-		a3.remove(2);
-		//Queda asi: 10 9 7 5 4 3 2 1 0
-		System.out.println(a3);
-		a3.remove(Integer.valueOf(2));
-		System.out.println(a3);
-		//La instruccion me remueve el numero dos en vez del elemento en tal posicion
-		
-		//Los demas creo que no los vimos
+
 	}
 }

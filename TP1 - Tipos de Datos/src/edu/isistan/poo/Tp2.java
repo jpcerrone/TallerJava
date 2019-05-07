@@ -1,20 +1,73 @@
 package edu.isistan.poo;
 
 
+import java.io.DataOutputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.TreeSet;
 
 import edu.isistan.poo.Tp2.UsuarioNoAutorizadoException;
 
 
 
 public class Tp2 {
+	
+	
+	public static abstract class Dispositivo implements Comparable<Dispositivo>{
+		private int id;
+		private String nombre;
+		
+		public Dispositivo(int id, String nombre) {
+			super();
+			this.id = id;
+			this.nombre = nombre;
+		}
+
+		public int getId() {
+			return id;
+		}
+
+		public String getNombre() {
+			return nombre;
+		}
+
+		public int compareTo(Dispositivo d){
+			if (this.getId() > d.getId())
+				return 1;
+			if (this.getId() < d.getId())
+				return -1;
+			else{
+				return this.nombre.compareTo(d.getNombre());
+			}
+		
+		}
+	}
+	
+	public static class Celular extends Dispositivo{
+
+		public Celular(int id, String nombre) {
+			super(id, nombre);
+			// TODO Auto-generated constructor stub
+		}
+		
+	}
+	
+	public static TreeSet<Celular> getTreeSet(Collection<Dispositivo> c){
+		TreeSet<Celular> tS = new TreeSet<Celular>();
+		for(Dispositivo d : c){
+			tS.add((Celular) d);
+		}
+		return tS;
+		
+	}
 	public static class UsuarioNoAutorizadoException extends Exception{
 		
 		/**
@@ -120,13 +173,19 @@ agrupados marca.
 	 * 
 	 */
 	
+	
 	public static class Vehiculo{
 		private String nombre;
 		private Date fechaFabricacion;
-		public Vehiculo(String nombre, Date fechaFabricacion) {
+		private String marca;
+		public Vehiculo(String nombre, Date fechaFabricacion, String marca) {
 			super();
 			this.nombre = nombre;
 			this.fechaFabricacion = fechaFabricacion;
+			this.marca = marca;
+		}
+		public String getMarca() {
+			return marca;
 		}
 		public String getNombre() {
 			return nombre;
@@ -148,13 +207,17 @@ agrupados marca.
 			lista = new ArrayList<E>();
 		}
 
+		@SuppressWarnings("unchecked")
 		public boolean add(Vehiculo v) {
 			if ((v.getFechaFabricacion().after(d1)) && (v.getFechaFabricacion().before(d2)))
 				return lista.add((E) v);
 		return false;
 		}
 		
-		
+		public String toString(){
+			
+			return lista.toString(); //Falta lo de la hash
+		}
 	}
 	public static void main(String[] args) throws FileNotFoundException {
 		//ej1
@@ -171,6 +234,7 @@ agrupados marca.
 			System.out.println(getCantidadApariciones("src\\edu\\isistan\\poo\\texto.txt", "man"));
 			
 		//ej3
+			/*
 			HashMap<String,String> baseDeDatos = new HashMap<String, String>();
 			baseDeDatos.put("jpcerronex", "m65");
 			baseDeDatos.put("jdonsdsd", "m5");
@@ -183,19 +247,39 @@ agrupados marca.
 				e.printStackTrace();
 			}
 			
+			*/
+		//Generics
 			
-			
-		//ej4
+		//ej1
+			/*
 			List<Par<Animal,Jaula>> l1 = new ArrayList<Par<Animal, Jaula>>();
 			l1.add(new Par<Animal, Jaula>(new Animal("Perro"), new Jaula(45)));
 			l1.add(new Par<Animal, Jaula>(new Animal("Gato"), new Jaula(4)));
 			l1.add(new Par<Animal, Jaula>(new Animal("Velocirraptor"), new Jaula(8)));
 			
 			System.out.println(l1);
+			DataOutputStream d1 = new DataOutputStream(null);
+			try {
+				d1.writeUTF(l1.toString());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
-			//Imprimir por pantalla las asignaciones utilizando streams. ??????????????????
+			 */
 			
-		//ej5
+		//ej2 hecho, falta lo de la hash
+		
+		//ej3
+			Celular c1 = new Celular(1, "Motorola");
+			Celular c2 = new Celular(2, "Apple");
+			
+			Collection<Dispositivo> lC = new ArrayList<Dispositivo>();
+			lC.add(c2);
+			lC.add(c1);
+			System.out.println(getTreeSet(lC));
+		
+			
 			
 	}
 	
