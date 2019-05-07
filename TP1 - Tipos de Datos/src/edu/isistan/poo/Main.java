@@ -1,8 +1,10 @@
 package edu.isistan.poo;
 
 import java.util.ArrayList;
+
 import java.util.Iterator;
 import java.util.List;
+
 
 public class Main {
 	public static void ejercicio1(ClaseA var){
@@ -126,6 +128,7 @@ public class Main {
 		System.out.println(v1.equals(v2)); //true
 		
 		//ej5
+
 		//-129,128, no van a dar true porque el compilador no les asigna una referencia predefinida
 		
 		//ej6
@@ -193,7 +196,37 @@ public class Main {
 		//El println usa el valueOf, que si un String es null le asigna el valor "null"
 		
 		//ej14 falta
+
+		//-129,128, no van a dar true porque el cache guarda la misma referencia para los numeros del 0 al 128 nomas
+
 		
+		//ej6
+		//Integer es una clase wrapper de int
+		ArrayList<Integer> a2 = new ArrayList();
+		//Lo de arriba se puede
+		//Con int no
+		//Los wrappers permiten usar los tipos de datos primitvos en colecciones
 		
+		//ej7
+		ArrayList<Integer> a3 = new ArrayList<>();
+		a3.add(10);
+		a3.add(9);
+		a3.add(8);
+		a3.add(7);
+		a3.add(5);
+		a3.add(4);
+		a3.add(3);
+		a3.add(2);
+		a3.add(1);
+		a3.add(0);
+		
+		a3.remove(2);
+		//Queda asi: 10 9 7 5 4 3 2 1 0
+		System.out.println(a3);
+		a3.remove(Integer.valueOf(2));
+		System.out.println(a3);
+		//La instruccion me remueve el numero dos en vez del elemento en tal posicion
+		
+		//Los demas creo que no los vimos
 	}
 }
